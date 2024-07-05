@@ -1,0 +1,43 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug teach_SRP.exe",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/teach_SRP.exe",
+            "cwd":"${workspaceFolder}"
+        },
+        {
+            "name": "Debug teach_OCP.exe",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/teach_OCP.exe",
+            "cwd":"${workspaceFolder}"
+        },
+        {
+            "name": "Debug teach_LSP.exe",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/teach_LSP.exe",
+            "cwd":"${workspaceFolder}"
+        },
+        {
+            "name": "Debug teach_ISP.exe",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/teach_ISP.exe",
+            "cwd":"${workspaceFolder}"
+        },
+        {
+            "name": "Debug teach_DIP.exe",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/teach_DIP.exe",
+            "cwd":"${workspaceFolder}"
+        }
+    ]
+}
