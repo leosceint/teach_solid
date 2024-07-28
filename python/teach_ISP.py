@@ -4,47 +4,58 @@
 # Interface Segregation Principle - ISP
 # It's better to have several small interfaces than big one
 
+from abc import ABC, abstractmethod
+
+
 """
 Interfaces
 """
 
 
-class IDocument(object):
+class IDocument(ABC):
     """
     Interface of Document
     """
     @property
-    def path(self):
-        return str()
+    @abstractmethod
+    def path(self) -> str:
+        pass
 
+    @abstractmethod
     def open(self):
         pass
 
+    @abstractmethod
     def close(self):
         pass
 
+    @abstractmethod
     def save(self):
         pass
 
 
-class IScanner(object):
+class IScanner(ABC):
     """
     Interface of Scanner
     """
+    @abstractmethod
     def scan_document(self, doc: IDocument):
         pass
 
+    @abstractmethod
     def scan_image(self, path: str):
         pass
 
 
-class IPrinter(object):
+class IPrinter(ABC):
     """
     Interface of Printer
     """
+    @abstractmethod
     def print_document(self, doc: IDocument):
         pass
 
+    @abstractmethod
     def print_image(self, path: str):
         pass
 
@@ -66,15 +77,12 @@ class RegularDocument(IDocument):
         return self.__path
 
     def open(self):
-        super().open()
         print(f"{self.__path} opened!")
 
     def close(self):
-        super().close()
         print(f"{self.__path} closed!")
 
     def save(self):
-        super().save()
         print(f"{self.__path} saved!")
 
 
@@ -90,15 +98,12 @@ class GovernmentDocument(IDocument):
         return self.__path
 
     def open(self):
-        super().open()
         print(f"Government {self.__path} opened!")
 
     def close(self):
-        super().close()
         print(f"Government {self.__path} closed!")
 
     def save(self):
-        super().save()
         print(f"Government {self.__path} saved!")
 
 
@@ -110,11 +115,9 @@ class RegularScanner(IScanner):
         self.__devID = devID
 
     def scan_document(self, doc: IDocument):
-        super().scan_document(doc)
         print(f"Document {doc.path} scanned on {self.__devID}")
 
     def scan_image(self, path: str):
-        super().scan_image(path)
         print(f"Image {path} scanned on {self.__devID}")
 
 
@@ -126,11 +129,9 @@ class RegularPrinter(IPrinter):
         self.__devID = devID
 
     def print_document(self, doc: IDocument):
-        super().print_document(doc)
         print(f"Document {doc.path} printed on {self.__devID}")
 
     def print_image(self, path: str):
-        super().print_image(path)
         print(f"Image {path} printed on {self.__devID}")
 
 
@@ -142,19 +143,15 @@ class MFP(IScanner, IPrinter):
         self.__devID = devID
 
     def scan_document(self, doc: IDocument):
-        IScanner.scan_document(self, doc)
         print(f"Document {doc.path} scanned on {self.__devID}")
 
     def scan_image(self, path: str):
-        IScanner.scan_image(self, path)
         print(f"Image {path} scanned on {self.__devID}")
 
     def print_document(self, doc: IDocument):
-        IPrinter.print_document(self, doc)
         print(f"Document {doc.path} printed on {self.__devID}")
 
     def print_image(self, path: str):
-        IPrinter.print_image(self, path)
         print(f"Image {path} printed on {self.__devID}")
 
 
@@ -182,6 +179,5 @@ if __name__ == "__main__":
     mfp.print_document(reg_doc)
     mfp.scan_document(gov_doc)
     mfp.print_document(gov_doc)
-
 
     print("Done!")

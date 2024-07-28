@@ -3,6 +3,8 @@
 
 # Liskov Substitution Principle - LSP
 # SuperClass worked similar as SubClass in code that call them
+
+
 class BaseHuman(object):
     def __str__(self):
         return "Base Human\n"

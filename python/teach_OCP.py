@@ -4,10 +4,15 @@
 # Open-Closed Principle - OCP
 # Opened for expansion. Closed for modification
 
-class InterfaceHuman(object):
+from abc import ABC, abstractmethod
+
+
+class InterfaceHuman(ABC):
+    @abstractmethod
     def __str__(self):
         pass
 
+    @abstractmethod
     def go(self):
         pass
 
@@ -49,8 +54,6 @@ class Employee(Human):
 
 
 if __name__ == "__main__":
-    ihuman = InterfaceHuman()
-    ihuman.go()
 
     human = Human("Lev Grodzitskiy", 32, 111.3)
     print(human)
@@ -60,3 +63,4 @@ if __name__ == "__main__":
     print(employee)
     employee.go()
 
+    print("Done!")

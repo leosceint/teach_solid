@@ -9,10 +9,14 @@ import random
 # Super Modules and Sub Modules depend on interfaces, but not between themselves
 
 
-class ILogger(object):
+from abc import ABC, abstractmethod
+
+
+class ILogger(ABC):
     """
     Interface of Logger
     """
+    @abstractmethod
     def log(self, message: str):
         pass
 
